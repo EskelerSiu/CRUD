@@ -11,31 +11,37 @@ use Illuminate\Support\Facades\Mail;
 
 class GamesController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         // $videogames = array('Fifa21','Fornite','Super Mario','Halo');
-        $videogames = Videogame::orderBy('id','desc')->get();
-       
-        return view('index',['games'=>$videogames]);
+        $videogames = Videogame::orderBy('id', 'desc')->get();
+
+        return view('index', ['games' => $videogames]);
     }
 
-    public function create(){
-        $categorias = Category ::all();
-        return view('create', ['categorias'=>$categorias]);
-    
+    public function create()
+    {
+        $categorias = Category::all();
+        return view('create', ['categorias' => $categorias]);
+
     }
 
-    public function help($name_game, $categoria=null){
-            $date = Now();
-            return view('show',['namevideoGame' => $name_game,
-                                'categoryGame' => $categoria,
-                                'fecha' => $date ]);
+    public function help($name_game, $categoria = null)
+    {
+        $date = Now();
+        return view('show', [
+            'namevideoGame' => $name_game,
+            'categoryGame' => $categoria,
+            'fecha' => $date
+        ]);
 
-     }
+    }
 
-     public function storeVideogame (StoreVideogame $request){
-    // return $request->all();
+    public function storeVideogame(StoreVideogame $request)
+    {
+        // return $request->all();
 
-        // $request->validate([
+        //$request->validate([
         //     'name_game'=>'required|min:5|max:15'
 
 
@@ -49,7 +55,7 @@ class GamesController extends Controller
         // $game->save();
 
         Videogame::create($request->all());
-        foreach(['marcoantoniodiazmunoz.0102@gmail.com'] as $recipient){
+        foreach (['angenitochavez@gmail.com'] as $recipient) {
             Mail::to($recipient)->send(new VideogameMail());
         }
 
@@ -57,18 +63,20 @@ class GamesController extends Controller
 
 
         return redirect()->route('games');
-     }
+    }
 
-     public function view($game_id){
+    public function view($game_id)
+    {
         $game = Videogame::find($game_id);
         $categorias = Category::all();
-        return view('update',['categorias'=>$categorias,'game'=>$game]);
+        return view('update', ['categorias' => $categorias, 'game' => $game]);
 
-     }
+    }
 
-     public function updateVideogame (Request $request){
+    public function updateVideogame(Request $request)
+    {
         $request->validate([
-            'name_game'=>'required|min:5|max:15'
+            'name_game' => 'required|min:5|max:15'
 
 
         ]);
@@ -81,18 +89,19 @@ class GamesController extends Controller
         $game->save();
 
         return redirect()->route('games');
-     }
+    }
 
-     public function delete($game_id){
+    public function delete($game_id)
+    {
         $game = Videogame::find($game_id);
         $game->delete();
         return redirect()->route('games');
-        
-     }
+
+    }
 
 
 
 
- 
+
 }
 

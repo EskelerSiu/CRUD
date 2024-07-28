@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             CategoriesTableSeeder::class]
         );
 
-        Videogame::factory(20)->create();
+        Videogame::factory(100)->create();
     
     }
 }

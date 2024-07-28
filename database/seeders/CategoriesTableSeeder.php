@@ -26,5 +26,17 @@ class CategoriesTableSeeder extends Seeder
         $category2->description = "Categoria basado en juegos y diversion extrema";
         $category2->active = true;
         $category2->save();
+
+        $category3 = new Category;
+        $category3->name = "Deportes";
+        $category3->description = "Categoria basado en deportes como, futbol, baloncestos, tenis...";
+        $category3->active = true;
+        $category3->save();
+
+        $category4 = new Category;
+        $category4->name = "RPG";
+        $category4->description = "Categoria basado en juegos de rol.";
+        $category4->active = true;
+        $category4->save();
     }
 }

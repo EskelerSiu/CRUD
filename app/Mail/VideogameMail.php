@@ -29,7 +29,7 @@ class VideogameMail extends Mailable
   
     public function build(){
 
-        $nombre = "El rincon de Marcos";
+        $nombre = "El rincon de Angen";
         return $this->view('mails.videogame',['nombre'=>$nombre]);
     }
 }
