@@ -15,7 +15,6 @@ class GamesController extends Controller
     {
         // $videogames = array('Fifa21','Fornite','Super Mario','Halo');
         $videogames = Videogame::orderBy('id', 'desc')->get();
-
         return view('index', ['games' => $videogames]);
     }
 
@@ -23,7 +22,6 @@ class GamesController extends Controller
     {
         $categorias = Category::all();
         return view('create', ['categorias' => $categorias]);
-
     }
 
     public function help($name_game, $categoria = null)
@@ -34,20 +32,14 @@ class GamesController extends Controller
             'categoryGame' => $categoria,
             'fecha' => $date
         ]);
-
     }
 
     public function storeVideogame(StoreVideogame $request)
     {
         // return $request->all();
-
         //$request->validate([
         //     'name_game'=>'required|min:5|max:15'
-
-
         // ]);
-
-
         // $game = new Videogame();
         // $game->name = $request->name;
         // $game->category_id = $request->category_id;
@@ -55,13 +47,9 @@ class GamesController extends Controller
         // $game->save();
 
         Videogame::create($request->all());
-        foreach (['angenitochavez@gmail.com'] as $recipient) {
+        foreach (['20161156@itoaxaca.edu.mx'] as $recipient) {
             Mail::to($recipient)->send(new VideogameMail());
         }
-
-
-
-
         return redirect()->route('games');
     }
 
@@ -70,17 +58,13 @@ class GamesController extends Controller
         $game = Videogame::find($game_id);
         $categorias = Category::all();
         return view('update', ['categorias' => $categorias, 'game' => $game]);
-
     }
 
     public function updateVideogame(Request $request)
     {
         $request->validate([
             'name_game' => 'required|min:5|max:15'
-
-
         ]);
-
 
         $game = Videogame::find($request->game_id);
         $game->name = $request->name_game;
@@ -96,12 +80,6 @@ class GamesController extends Controller
         $game = Videogame::find($game_id);
         $game->delete();
         return redirect()->route('games');
-
     }
-
-
-
-
-
 }
 

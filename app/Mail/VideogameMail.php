@@ -16,7 +16,8 @@ class VideogameMail extends Mailable
      * 
      * @return void
      */
-    public function __construct(){
+    public function __construct()
+    {
 
     }
 
@@ -26,10 +27,10 @@ class VideogameMail extends Mailable
      * @return $this
      */
 
-  
-    public function build(){
 
+    public function build()
+    {
         $nombre = "El rincon de Angen";
-        return $this->view('mails.videogame',['nombre'=>$nombre]);
+        return $this->view('mails.videogame', ['nombre' => $nombre]);
     }
 }

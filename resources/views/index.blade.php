@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Index</title>
 </head>
 <body>
-
     <h1>Vista creada desde el blade y llamada desde el controlador</h1>
-    <p><a href="{{ route('gamesCreate')}}"> Nuevo videoJuego</a></p>
+    <p><a href="{{ route('gamesCreate')}}">Nuevo videojuego</a></p>
     <h2>Listado de juegos</h2>
     <table>
         <thead>
@@ -34,23 +33,15 @@
                     <span style="color: green">Activo</span>
                     @else
                     <span style="color: red">Inactivo</span>
-                    @endif
-                    
+                    @endif   
                   </th>
                   <th>
                     <a href="{{ route('deleteGame',$game->id) }}">Eliminar</a>
-                  </th>
-
-                
+                  </th>  
             </tr>
-            @empty
-                
-            @endforelse
-            
+            @empty            
+            @endforelse       
         </tbody>
-    </table>
-   
-    
-    
+    </table> 
 </body>
 </html>

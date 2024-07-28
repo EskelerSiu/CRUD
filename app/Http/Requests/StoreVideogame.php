@@ -23,18 +23,20 @@ class StoreVideogame extends FormRequest
     {
         return [
             //
-            'name'=>'required|min:5|max:15',
+            'name' => 'required|min:5|max:15',
         ];
     }
 
-    public function attributes(){
-        return[
+    public function attributes()
+    {
+        return [
             'name' => 'videogame name'
         ];
     }
 
-    public function messages(){
-        return[
+    public function messages()
+    {
+        return [
             'name.required' => 'El nombre del videojuego no puede estar vacio'
         ];
 

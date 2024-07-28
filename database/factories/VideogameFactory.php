@@ -19,8 +19,7 @@ class VideogameFactory extends Factory
         return [
             //
             'name' => $this->faker->name(),
-            'category_id' => $this->faker->randomElement([1,2,3,4])
-
+            'category_id' => $this->faker->randomElement([1, 2, 3, 4])
         ];
     }
 }
